@@ -1,14 +1,31 @@
 package com.xl0e.nn.core;
 
-public class Synaps {
-    float weight;
-    private float value;
+import java.util.Random;
 
-    public float read() {
+public class Synaps {
+    private static final Random R = new Random(1);
+
+    private double weight = R.nextDouble();
+    private double value;
+
+    public double read() {
         return value;
     }
 
-    public void write(float value) {
+    public void write(double value) {
         this.value = weight * value;
     }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
 }

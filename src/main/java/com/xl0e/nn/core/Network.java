@@ -12,11 +12,17 @@ public class Network {
 
     public void build() {
         for (int i = 0; i < layers.length - 1; i++) {
-            for (int j = 0; j < layers[i].neurons.length; j++) {
-                for (int k = 0; k < layers[i + 1].neurons.length; k++) {
-                    layers[i].neurons[j].outputTo(layers[i + 1].neurons[k]);
+            for (Neuron n1 : layers[i].neurons) {
+                for (Neuron n2 : layers[i + 1].neurons) {
+                    n1.synapsTo(n2);
                 }
             }
+        }
+    }
+
+    public void train(int[] set) {
+        for (int i=0; i< layers[0].neurons.length; i++) {
+            layers[0].neurons
         }
     }
 
