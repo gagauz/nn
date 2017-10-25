@@ -3,8 +3,8 @@ package com.xl0e.nn.core;
 public class Neuron {
     Layer layer;
 
-    Synaps[] input;
-    Synaps[] output;
+    Synaps[] input = new Synaps[0];
+    Synaps[] output = new Synaps[0];
 
     public Neuron(Layer layer) {
         this.layer = layer;
@@ -12,11 +12,11 @@ public class Neuron {
 
     public void synapsTo(Neuron neuron) {
         Synaps s = new Synaps();
-        s.weight = 0.5f;
     }
 
     public void activate() {
-        double inValue = 0;
+        double inValue = 0.0;
+
         for (Synaps in : input) {
             inValue += in.read();
         }
@@ -25,6 +25,12 @@ public class Neuron {
 
         for (Synaps out : output) {
             out.write(outValue);
+        }
+    }
+
+    public void write(double value) {
+        for (Synaps out : output) {
+            out.write(value);
         }
     }
 

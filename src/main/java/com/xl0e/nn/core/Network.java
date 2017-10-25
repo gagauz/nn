@@ -21,9 +21,17 @@ public class Network {
     }
 
     public void train(int[] set) {
-        for (int i=0; i< layers[0].neurons.length; i++) {
-            layers[0].neurons
+        for (int i = 0; i < getInputLayer().neurons.length; i++) {
+            getInputLayer().neurons[i].write(set[i]);
         }
+    }
+
+    public Layer getInputLayer() {
+        return layers[0];
+    }
+
+    public Layer getOutputLayer() {
+        return layers[layers.length - 1];
     }
 
 }
