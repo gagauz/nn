@@ -6,18 +6,19 @@ public class Synaps {
     private static final Random R = new Random(1);
 
     private double weight = R.nextDouble();
-    private double value;
+    private double weight1;
+
+    private double value = -10;
 
     public double read() {
+        if (value < -9) {
+            throw new IllegalStateException("The value is not set yet");
+        }
         return value;
     }
 
     public void write(double value) {
         this.value = weight * value;
-    }
-
-    public void setValue(double value) {
-        this.value = value;
     }
 
     public double getWeight() {
@@ -28,4 +29,9 @@ public class Synaps {
         this.weight = weight;
     }
 
+    public static void link(Neuron from, Neuron to) {
+        Synaps s = new Synaps();
+        from.output.add(s);
+        to.input.add(s);
+    }
 }

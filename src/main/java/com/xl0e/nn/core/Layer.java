@@ -1,10 +1,8 @@
 package com.xl0e.nn.core;
 
-import java.util.function.Function;
-
 public class Layer {
 
-    Function<Double, Double> func;
+    private ActivationFunction func;
 
     Neuron[] neurons;
 
@@ -21,7 +19,7 @@ public class Layer {
         }
     }
 
-    public double calculateOutput(double value) {
-        return func.apply(value);
+    public ActivationFunction getFunction() {
+        return func;
     }
 }

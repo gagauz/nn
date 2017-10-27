@@ -14,7 +14,7 @@ public class Network {
         for (int i = 0; i < layers.length - 1; i++) {
             for (Neuron n1 : layers[i].neurons) {
                 for (Neuron n2 : layers[i + 1].neurons) {
-                    n1.synapsTo(n2);
+                    Synaps.link(n1, n2);
                 }
             }
         }

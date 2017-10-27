@@ -1,17 +1,18 @@
 package com.xl0e.nn.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Neuron {
     Layer layer;
 
-    Synaps[] input = new Synaps[0];
-    Synaps[] output = new Synaps[0];
+    List<Synaps> input = new ArrayList<>();
+    List<Synaps> output = new ArrayList<>();
+
+    private double outValue;
 
     public Neuron(Layer layer) {
         this.layer = layer;
-    }
-
-    public void synapsTo(Neuron neuron) {
-        Synaps s = new Synaps();
     }
 
     public void activate() {
@@ -21,17 +22,28 @@ public class Neuron {
             inValue += in.read();
         }
 
-        double outValue = layer.calculateOutput(inValue);
+        outValue = layer.getFunction().apply(inValue);
 
         for (Synaps out : output) {
             out.write(outValue);
         }
     }
 
-    public void write(double value) {
+    public void setInput(double value) {
         for (Synaps out : output) {
             out.write(value);
         }
     }
 
+    public void compareToIdeal(double ideal) {
+        double delta = 0;
+        if (output.isEmpty()) {
+            delta = (ideal - outValue) * layer.getFunction().getDerivative().apply(outValue);
+        } else {
+            delta = (ideal - outValue) * layer.getFunction().getDerivative().apply(outValue);
+        }
+        for (Synaps s : input) {
+
+        }
+    }
 }
