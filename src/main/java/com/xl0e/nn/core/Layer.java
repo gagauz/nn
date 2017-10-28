@@ -1,15 +1,24 @@
 package com.xl0e.nn.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.xl0e.nn.core.func.BipolarSigmoid;
+import com.xl0e.nn.core.util.SB;
+import com.xl0e.nn.neuron.Neuron;
+
 public class Layer {
 
-    private ActivationFunction func;
+    private ActivationFunction func = new BipolarSigmoid();
 
-    Neuron[] neurons;
+    private double agility = 0.99;
 
-    public Layer(int count) {
-        this.neurons = new Neuron[count];
+    private List<Neuron> neurons;
+
+    public Layer(int count, LayerType type) {
+        neurons = new ArrayList<>(count + 1);
         for (int i = 0; i < count; i++) {
-            this.neurons[i] = new Neuron(this);
+            neurons.add(type.apply(this));
         }
     }
 
@@ -22,4 +31,23 @@ public class Layer {
     public ActivationFunction getFunction() {
         return func;
     }
+
+    public double getAgility() {
+        return agility;
+    }
+
+    public List<Neuron> getNeurons() {
+        return neurons;
+    }
+
+    @Override
+    public String toString() {
+        SB sb = new SB("L [");
+        for (Neuron n : neurons) {
+            sb.append(n.toString()).append(", ");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
 }

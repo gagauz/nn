@@ -7,16 +7,16 @@ import java.util.function.Function;
 
 import com.xl0e.nn.core.ActivationFunction;
 
-public class Sigmoid extends ActivationFunction {
+public class BipolarSigmoid extends ActivationFunction {
 
     @Override
     public Double apply(Double x) {
-        return 1 / (1 + pow(E, -x));
+        return 2 / (1 + pow(E, -x)) - 1;
     }
 
     @Override
     public Function<Double, Double> getDerivative() {
-        return x -> apply(x) * (1 - apply(x));
+        return x -> 0.5 * (1 + apply(x)) * (1 - apply(x));
     }
 
 }
