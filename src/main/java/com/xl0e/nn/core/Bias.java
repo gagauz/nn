@@ -11,6 +11,7 @@ public class Bias extends Synaps {
 
     @Override
     public void setValue(double value) {
+        throw new IllegalStateException();
     }
 
     @Override

@@ -14,7 +14,7 @@ public class TestXor {
     };
 
     public static void main(String[] args) {
-        network = new Network(2, 2, 1);
+        network = new Network(2, 4, 1);
         network.build();
         for (int i = 0; i < 200; i++) {
             for (int j = 0; j < trainSet.length; j++) {

@@ -11,7 +11,7 @@ public class Layer {
 
     private ActivationFunction func = new BipolarSigmoid();
 
-    private double agility = 0.99;
+    private double agility = 1.0;
 
     private List<Neuron> neurons;
 

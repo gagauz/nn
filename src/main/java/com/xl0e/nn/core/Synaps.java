@@ -9,7 +9,7 @@ public class Synaps {
     private static final Random R = new Random(1);
 
     private double value;
-    private double weight = 0.5 - R.nextDouble();
+    private double weight = R.nextDouble();
     private double delta;
 
     public double getValue() {

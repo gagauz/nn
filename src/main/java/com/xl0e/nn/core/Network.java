@@ -20,7 +20,6 @@ public class Network {
             for (Neuron n1 : layers[i].getNeurons()) {
                 for (Neuron n2 : layers[i + 1].getNeurons()) {
                     n1.linkTo(n2);
-                    // n2.linkBias();
                 }
             }
         }
@@ -28,7 +27,7 @@ public class Network {
         int p = layers[1].getNeurons().size();
         for (int i = 0; i < layers.length; i++) {
             for (Neuron n1 : layers[i].getNeurons()) {
-                // n1.linkBias();
+                n1.linkBias();
                 // n1.build(n, p);
             }
         }
@@ -39,11 +38,6 @@ public class Network {
         for (int i = layers.length - 1; i > -1; i--) {
             for (int j = 0; j < layers[i].getNeurons().size(); j++) {
                 layers[i].getNeurons().get(j).calculateDelta(j < ideals.length ? ideals[j] : 0.0);
-            }
-        }
-        for (int i = 0; i < layers.length; i++) {
-            for (int j = 0; j < layers[i].getNeurons().size(); j++) {
-                // layers[i].getNeurons().get(j).updateWeights();
             }
         }
     }

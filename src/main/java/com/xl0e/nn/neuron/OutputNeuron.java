@@ -13,8 +13,6 @@ public class OutputNeuron extends Neuron {
 
     @Override
     public void calculateDelta(double ideal) {
-        // setDelta((ideal - getOutValue()) *
-        // layer.getFunction().getDerivative().apply(getInValue()));
         double deltaOut = (ideal - getOutValue()) * layer.getFunction().getDerivative().apply(getInValue());
         updateWeights(deltaOut);
     }
