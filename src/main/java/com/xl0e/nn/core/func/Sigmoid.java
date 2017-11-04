@@ -7,7 +7,9 @@ import java.util.function.Function;
 
 import com.xl0e.nn.core.ActivationFunction;
 
-public class Sigmoid extends ActivationFunction {
+public class Sigmoid implements ActivationFunction {
+
+    public static final Sigmoid INSTANCE = new Sigmoid();
 
     @Override
     public Double apply(Double x) {

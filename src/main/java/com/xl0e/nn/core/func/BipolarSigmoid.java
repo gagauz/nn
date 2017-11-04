@@ -7,7 +7,9 @@ import java.util.function.Function;
 
 import com.xl0e.nn.core.ActivationFunction;
 
-public class BipolarSigmoid extends ActivationFunction {
+public class BipolarSigmoid implements ActivationFunction {
+
+    public static final BipolarSigmoid INSTANCE = new BipolarSigmoid();
 
     @Override
     public Double apply(Double x) {

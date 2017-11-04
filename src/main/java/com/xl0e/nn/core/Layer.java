@@ -50,4 +50,8 @@ public class Layer {
         return sb.toString();
     }
 
+    public void setFunction(ActivationFunction activationFunction) {
+        this.func = activationFunction;
+    }
+
 }

@@ -7,7 +7,8 @@ import java.util.function.Function;
 
 import com.xl0e.nn.core.ActivationFunction;
 
-public class HypTang extends ActivationFunction {
+public class HypTang implements ActivationFunction {
+    public static final HypTang INSTANCE = new HypTang();
 
     @Override
     public Double apply(Double x) {

@@ -15,6 +15,19 @@ public class Network {
         }
     }
 
+    public Network(Topology topology) {
+        int lc = topology.getLayersCount();
+        layers = new Layer[lc];
+        layers[0] = new Layer(topology.getNCount(0), LayerType.INPUT);
+        layers[0].setFunction(topology.getActivationFunction(0));
+        layers[lc - 1] = new Layer(topology.getNCount(lc - 1), LayerType.OUTPUT);
+        layers[lc - 1].setFunction(topology.getActivationFunction(lc - 1));
+        for (int i = 1; i < lc - 1; i++) {
+            layers[i] = new Layer(topology.getNCount(i), LayerType.HIDDEN);
+            layers[i].setFunction(topology.getActivationFunction(i));
+        }
+    }
+
     public void build() {
         for (int i = 0; i < layers.length - 1; i++) {
             for (Neuron n1 : layers[i].getNeurons()) {

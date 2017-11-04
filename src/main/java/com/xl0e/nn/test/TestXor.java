@@ -1,6 +1,8 @@
 package com.xl0e.nn.test;
 
 import com.xl0e.nn.core.Network;
+import com.xl0e.nn.core.Topology;
+import com.xl0e.nn.core.func.ReLU;
 
 public class TestXor {
 
@@ -14,6 +16,12 @@ public class TestXor {
     };
 
     public static void main(String[] args) {
+
+        network = Topology
+                .layers(2, 4, 1)
+                .funcs(ReLU.INSTANCE, ReLU.INSTANCE, ReLU.INSTANCE)
+                .buildNetwork();
+
         network = new Network(2, 4, 1);
         network.build();
         for (int i = 0; i < 200; i++) {

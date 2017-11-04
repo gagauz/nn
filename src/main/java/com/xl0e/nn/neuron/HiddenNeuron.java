@@ -15,10 +15,7 @@ public class HiddenNeuron extends Neuron {
         for (Synaps s : outputs) {
             deltaIn += s.getDelta();
         }
-        // setDelta(deltaIn *
-        // layer.getFunction().getDerivative().apply(getInValue()));
         final double deltaOut = deltaIn * layer.getFunction().getDerivative().apply(getInValue());
-        // withInputs(s -> s.setDelta(getDelta()));
 
         updateWeights(deltaOut);
     }
